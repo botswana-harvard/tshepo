@@ -23,7 +23,7 @@ df_resumed = pd.DataFrame({'rx_resumed': rx_resumed}).reset_index()
 # discontinued treatment
 df_discontinued = df_data.query('Q002X0 == 1 and rx_dose_status == \'Discontinued\' and rx_modification_reason != \'Completion of Study follow-up\'')[['PID', 'VisitID', 'rx_code', 'rx_modification_date']]
 gb_discontinued = df_discontinued[['PID', 'VisitID', 'rx_code', 'rx_modification_date']].groupby(['PID', 'rx_modification_date'])
-rx_discontinued = gb_resumed['rx_code'].unique()
+rx_discontinued = gb_discontinued['rx_code'].unique()
 df_discontinued = pd.DataFrame({'rx_discontinued': rx_discontinued}).reset_index()
 
 # off treatment
